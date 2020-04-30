@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://yanglq.xyz/db_tinyprogram?autoReconnect=true&useSSL=false&characterEncoding=utf-8
+    username: admin
+    password: originUser123456
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mvc:
+    static-path-pattern: /img/**
+  resources:
+    static-locations: file:E://yfn/
+server:
+  port: 4430
+  max-http-header-size: 102400
+  undertow:
+    max-http-post-size: -1
+mybatis:
+  type-aliases-package: com.example.javaee
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
