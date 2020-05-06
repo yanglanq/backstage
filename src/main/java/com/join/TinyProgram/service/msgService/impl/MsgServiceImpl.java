@@ -15,7 +15,7 @@ import java.util.List;
  * description
  */
 @Service
-public class impl implements msgService {
+public class MsgServiceImpl implements msgService {
     @Autowired
     msgMapper msgMapper;
 
