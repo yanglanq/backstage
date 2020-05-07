@@ -15,4 +15,5 @@ public interface SucculentMapper {
     boolean addNew(Succulent succulent);
     List<Succulent> getAll() throws Exception;
     List<Succulent> getSucculentByPage(Integer pageNum,Integer size);
+    List<Succulent> searchByword(Succulent succulent);
 }

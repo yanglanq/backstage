@@ -13,7 +13,11 @@
         values (#{imgUrl},#{pname},#{alias},#{classification},#{intro},#{feature},#{habits},#{purpose},#{soil},#{beam},#{humidity},#{dormancy})
     </insert>
 
-
+    <select id="searchByword" parameterType="com.join.TinyProgram.entity.Succulent">
+        SELECT *
+        FROM t_succulent
+        where feature like '%'#{feature}'%'
+    </select>
 <!--    <update id="update" parameterType="com.join.TinyProgram.entity.Succulent">-->
 <!--        -->
 <!--    </update>-->

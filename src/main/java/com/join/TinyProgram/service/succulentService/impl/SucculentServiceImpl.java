@@ -41,4 +41,8 @@ public class SucculentServiceImpl implements SucculentService {
         return pageInfo;
     }
 
+    @Override
+    public List<Succulent> searchByword(Succulent succulent){
+        return succulentMapper.searchByword(succulent);
+    }
 }

@@ -15,4 +15,5 @@ public interface SucculentService {
     boolean addNew(Succulent succulent) throws Exception;
     List<Succulent> getAll() throws Exception;
     PageInfo<Succulent> getSucculentByPage(Integer pageNum, Integer size) throws Exception;
+    List<Succulent> searchByword(Succulent succulent);
 }

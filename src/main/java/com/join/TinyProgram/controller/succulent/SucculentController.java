@@ -6,6 +6,7 @@ import com.join.TinyProgram.service.succulentService.SucculentService;
 import com.join.TinyProgram.utils.resultHander.CommonErrorEnum;
 import com.join.TinyProgram.utils.resultHander.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,6 +67,18 @@ public class SucculentController {
             return new ResponseBean(true,succulentService.getSucculentByPage(pageNum,size));
         }catch (Exception e){
             return new ResponseBean(false, CommonErrorEnum.FAIL_GETDATA);
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("/searchByWord")
+    public Object searchByword(String feature){
+        try{
+            Succulent succulent = new Succulent();
+            succulent.setFeature(feature);
+            return new ResponseBean(true,succulentService.searchByword(succulent));
+        }catch (NullPointerException e){
+            return new ResponseBean(false,CommonErrorEnum.DATABASE_ERROR);
         }
     }
 }
