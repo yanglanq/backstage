@@ -1,13 +1,19 @@
 package com.join.TinyProgram.controller.succulent;
 
+import com.github.pagehelper.PageInfo;
 import com.join.TinyProgram.entity.Succulent;
 import com.join.TinyProgram.service.succulentService.SucculentService;
+import com.join.TinyProgram.utils.resultHander.CommonErrorEnum;
+import com.join.TinyProgram.utils.resultHander.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -35,7 +41,7 @@ public class SucculentController {
     }
 
     @ResponseBody
-    @RequestMapping("addNew")
+    @RequestMapping("/addNew")
     public Object addNew(Succulent succulent){
         try{
             if(succulent.getPname().equals("")){
@@ -50,6 +56,16 @@ public class SucculentController {
             }
         }catch (NullPointerException e){
             return false;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("/getByPage")
+    public Object getSucculentByPage(@RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum, @RequestParam(value = "size",defaultValue = "10")Integer size){
+        try {
+            return new ResponseBean(true,succulentService.getSucculentByPage(pageNum,size));
+        }catch (Exception e){
+            return new ResponseBean(false, CommonErrorEnum.FAIL_GETDATA);
         }
     }
 }

@@ -12,7 +12,8 @@
         insert into t_succulent(imgUrl,pname,alias,classification,intro,feature,habits,purpose,soil,beam,humidity,dormancy)
         values (#{imgUrl},#{pname},#{alias},#{classification},#{intro},#{feature},#{habits},#{purpose},#{soil},#{beam},#{humidity},#{dormancy})
     </insert>
-    
+
+
 <!--    <update id="update" parameterType="com.join.TinyProgram.entity.Succulent">-->
 <!--        -->
 <!--    </update>-->

@@ -14,4 +14,5 @@ import java.util.List;
 public interface SucculentMapper {
     boolean addNew(Succulent succulent);
     List<Succulent> getAll() throws Exception;
+    List<Succulent> getSucculentByPage(Integer pageNum,Integer size);
 }

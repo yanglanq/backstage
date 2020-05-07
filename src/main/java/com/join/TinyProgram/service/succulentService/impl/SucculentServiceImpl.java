@@ -1,5 +1,7 @@
 package com.join.TinyProgram.service.succulentService.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.join.TinyProgram.entity.Succulent;
 import com.join.TinyProgram.mapper.succulentMapper.SucculentMapper;
 import com.join.TinyProgram.service.succulentService.SucculentService;
@@ -30,4 +32,13 @@ public class SucculentServiceImpl implements SucculentService {
     public List<Succulent> getAll() throws Exception{
         return succulentMapper.getAll();
     }
+
+    @Override
+    public PageInfo<Succulent> getSucculentByPage(Integer pageNum,Integer size) throws Exception{
+        PageHelper.startPage(pageNum,size);
+        List<Succulent> list = succulentMapper.getAll();
+        PageInfo<Succulent> pageInfo = new PageInfo<>(list);
+        return pageInfo;
+    }
+
 }
