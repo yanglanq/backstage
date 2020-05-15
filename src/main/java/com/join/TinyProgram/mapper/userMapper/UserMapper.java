@@ -1,6 +1,6 @@
 package com.join.TinyProgram.mapper.userMapper;
 
-import com.join.TinyProgram.entity.User;
+import com.join.TinyProgram.entity.user.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -38,13 +38,7 @@ public interface UserMapper {
      * @throws Exception
      */
     public int updateUser(@Param("user") User user)throws Exception;
-    /**
-     * 更新密码
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    public int updatePassword(@Param("user")User user)throws Exception;
+
 
     /**
      * 更新密码

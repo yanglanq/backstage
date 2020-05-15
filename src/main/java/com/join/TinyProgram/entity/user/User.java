@@ -1,4 +1,4 @@
-package com.join.TinyProgram.entity;
+package com.join.TinyProgram.entity.user;
 
 /**
  * @Author: Yangfn
@@ -9,10 +9,12 @@ public class User {
 
     private int id;
     private String username;
-    private String password;
+    private String diary;
     private String sex;
     private String headUrl;
     private String path;
+    private int status;
+    private String password;
 
     public int getId() {
         return id;
@@ -60,5 +62,35 @@ public class User {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getDiary() {
+        return diary;
+    }
+
+    public void setDiary(String diary) {
+        this.diary = diary;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", diary='" + diary + '\'' +
+                ", sex='" + sex + '\'' +
+                ", headUrl='" + headUrl + '\'' +
+                ", path='" + path + '\'' +
+                ", status=" + status +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

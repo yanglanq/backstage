@@ -1,6 +1,7 @@
 package com.join.TinyProgram.service.userService;
 
-import com.join.TinyProgram.entity.User;
+import com.join.TinyProgram.entity.diary.Diary;
+import com.join.TinyProgram.entity.user.User;
 import java.util.List;
 
 
@@ -14,8 +15,6 @@ public interface UserService {
 
     public int update(User user) throws Exception;
 
-    public int updatePassword(User user) throws Exception;
-
     public int updateStatus(int id,int status) throws Exception;
 
     public List<User> listAll()throws Exception;
@@ -26,8 +25,11 @@ public interface UserService {
 
     public int addUser(User user)throws Exception;
 
-    public boolean judgeUsername(String username)throws Exception;
-
     public int uploadHead(int id,String path,String headUrl)throws Exception;
 
+    public List<Diary> listDiary(int userId)throws Exception;
+
+    public int addDiary(Diary diary)throws Exception;
+
+    public int deleteDiary(int id)throws Exception;
 }
