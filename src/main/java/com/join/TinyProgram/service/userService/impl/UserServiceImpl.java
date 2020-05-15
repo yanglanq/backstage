@@ -5,9 +5,12 @@ import com.join.TinyProgram.entity.user.User;
 import com.join.TinyProgram.mapper.diary.DiaryMapper;
 import com.join.TinyProgram.mapper.userMapper.UserMapper;
 import com.join.TinyProgram.service.userService.UserService;
+import org.apache.tomcat.util.buf.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -45,16 +48,16 @@ public class UserServiceImpl implements UserService {
         return userMapper.addUser(user);
     }
 
-    /**
-     * 修改个人信息
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public int update(User user) throws Exception{
-        return userMapper.updateUser(user);
-    }
+//    /**
+//     * 修改个人信息
+//     * @param user
+//     * @return
+//     * @throws Exception
+//     */
+//    @Override
+//    public int update(User user) throws Exception{
+//        return userMapper.updateUser(user);
+//    }
 
     /**
      * 修改状态
@@ -100,10 +103,27 @@ public class UserServiceImpl implements UserService {
     @Override
     public int addDiary(Diary diary)throws Exception{
         return diaryMapper.addDiary(diary);
+        //return userMapper.updateDiary(diary);
+    }
+    @Override
+    public int refresh(int id)throws Exception{
+        List<Diary> list=diaryMapper.listDiary(id);
+        System.out.println(list);
+        ArrayList li = new ArrayList();
+        for(int i = 0; i < list.size(); i++){
+            Diary diary=list.get(i);
+            li.add(String.valueOf(diary.getId()));
+        }
+        String str= StringUtils.join(li,',');
+        return userMapper.updateDiary(id,str);
     }
 
     @Override
     public int deleteDiary(int id)throws Exception{
         return diaryMapper.deleteDiary(id);
+    }
+    @Override
+    public int updateDiary(Diary diary)throws Exception{
+        return diaryMapper.updateDiary(diary);
     }
 }

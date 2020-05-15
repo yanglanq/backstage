@@ -1,5 +1,6 @@
 package com.join.TinyProgram.mapper.userMapper;
 
+import com.join.TinyProgram.entity.diary.Diary;
 import com.join.TinyProgram.entity.user.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -33,11 +34,11 @@ public interface UserMapper {
 
     /**
      * 更新个人信息
-     * @param user
+     * @param
      * @return
      * @throws Exception
      */
-    public int updateUser(@Param("user") User user)throws Exception;
+    public int updateDiary(@Param("id")int id,@Param("diary")String diary)throws Exception;
 
 
     /**
