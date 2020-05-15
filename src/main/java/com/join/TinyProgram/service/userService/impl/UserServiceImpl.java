@@ -1,6 +1,8 @@
 package com.join.TinyProgram.service.userService.impl;
 
-import com.join.TinyProgram.entity.User;
+import com.join.TinyProgram.entity.diary.Diary;
+import com.join.TinyProgram.entity.user.User;
+import com.join.TinyProgram.mapper.diary.DiaryMapper;
 import com.join.TinyProgram.mapper.userMapper.UserMapper;
 import com.join.TinyProgram.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    DiaryMapper diaryMapper;
+
 
     /**
      * 登录
@@ -50,16 +55,7 @@ public class UserServiceImpl implements UserService {
     public int update(User user) throws Exception{
         return userMapper.updateUser(user);
     }
-    /**
-     * 修改密码
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public int updatePassword(User user) throws Exception{
-        return userMapper.updatePassword(user);
-    }
+
     /**
      * 修改状态
      * @param id
@@ -83,25 +79,7 @@ public class UserServiceImpl implements UserService {
     public int delete(String card)throws Exception{
         return userMapper.deleteUser(card);
     }
-    /**
-     * 判断用户名
-     * @param
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public boolean judgeUsername(String name) throws Exception{
-        boolean b=true;
-        List<User> list=userMapper.listUser();
-        for(int i=0;i<list.size();i++){
-            User user=list.get(i);
-            if(user.getUsername().equals(name)){
-                b=false;
-                return b;
-            }
-        }
-        return b;
-    }
+
     /**
      * 上传头像
      * @param
@@ -112,5 +90,20 @@ public class UserServiceImpl implements UserService {
     public int uploadHead(int id,String path,String headUrl) throws Exception{
         return userMapper.uploadHead(id,path,headUrl);
 
+    }
+
+    @Override
+    public List<Diary> listDiary(int userId)throws Exception{
+        return diaryMapper.listDiary(userId);
+    }
+
+    @Override
+    public int addDiary(Diary diary)throws Exception{
+        return diaryMapper.addDiary(diary);
+    }
+
+    @Override
+    public int deleteDiary(int id)throws Exception{
+        return diaryMapper.deleteDiary(id);
     }
 }

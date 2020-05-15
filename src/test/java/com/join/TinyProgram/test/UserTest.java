@@ -1,6 +1,8 @@
 package com.join.TinyProgram.test;
 
+import com.join.TinyProgram.controller.user.UserController;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -10,8 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 public class UserTest {
+    @Autowired
+    UserController userController;
     @Test
-    public void listAllTest() {
+    public void listAllTest()throws Exception {
+        System.out.println(userController.listDiary(1));
 
     }
 }
