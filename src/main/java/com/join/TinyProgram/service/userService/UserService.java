@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserService {
     public User login(User user) throws Exception;
 
-    public int update(User user) throws Exception;
+//    public int update(User user) throws Exception;
 
     public int updateStatus(int id,int status) throws Exception;
 
@@ -31,5 +31,9 @@ public interface UserService {
 
     public int addDiary(Diary diary)throws Exception;
 
+    public int updateDiary(Diary diary)throws Exception;
+
     public int deleteDiary(int id)throws Exception;
+
+    public int refresh(int id)throws Exception;
 }

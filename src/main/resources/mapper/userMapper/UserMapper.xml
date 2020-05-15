@@ -13,8 +13,6 @@
         FROM t_user
     </select>
 
-
-
     <!--<select id="listFeelBack" resultType="feelBack">-->
     <!--SELECT *-->
     <!--FROM t_feelback-->
@@ -39,16 +37,16 @@
     <!--WHERE id=#{user.id}-->
     <!--</update>-->
 
-    <!--<update id="updateReport">-->
-    <!--UPDATE t_report-->
-    <!--SET score=#{report.score},point=#{report.point}-->
-    <!--WHERE id=#{report.id}-->
-    <!--</update>-->
+    <update id="updateDiary">
+    UPDATE t_user
+    SET diary=#{diary}
+    WHERE id=#{id}
+    </update>
 
-    <!--<insert id="addReport">-->
-    <!--INSERT INTO t_report-->
-    <!--(class_name,teacher,stu_id,score,point,credit)-->
-    <!--VALUES (#{report.class_name},#{report.teacher},-->
-    <!--#{report.stu_id},#{report.score},#{report.point},#{report.credit})-->
-    <!--</insert>-->
+    <insert id="addUser">
+    INSERT INTO t_user
+    (username,headUrl,path,sex)
+    VALUES (#{user.username},#{user.headUrl},
+    #{user.path},#{user.sex})
+    </insert>
 </mapper>

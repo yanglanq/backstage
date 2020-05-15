@@ -52,12 +52,22 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/addDiary")
     public int addDiary(Diary diary)throws Exception{
-        return userService.addDiary(diary);
+        return userService.addDiary(diary)+userService.refresh(diary.getUserId());
+    }
+    @ResponseBody
+    @RequestMapping("/refreshDiary")
+    public int refreshDiary(int id)throws Exception{
+        return userService.refresh(id);
     }
     @ResponseBody
     @RequestMapping("/deleteDiary")
     public int deleteDiary(int id)throws Exception{
         return userService.deleteDiary(id);
+    }
+    @ResponseBody
+    @RequestMapping("/updateDiary")
+    public int updateDiary(Diary diary)throws Exception{
+         return userService.updateDiary(diary);
     }
 
 }
