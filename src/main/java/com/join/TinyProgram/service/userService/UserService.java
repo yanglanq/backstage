@@ -27,13 +27,6 @@ public interface UserService {
 
     public int uploadHead(int id,String path,String headUrl)throws Exception;
 
-    public List<Diary> listDiary(int userId)throws Exception;
 
-    public int addDiary(Diary diary)throws Exception;
-
-    public int updateDiary(Diary diary)throws Exception;
-
-    public int deleteDiary(int id)throws Exception;
-
-    public int refresh(int id)throws Exception;
+//    public int refresh(int id)throws Exception;
 }

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,8 +21,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
-    @Autowired
-    DiaryMapper diaryMapper;
+
 
 
     /**
@@ -95,35 +93,18 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public List<Diary> listDiary(int userId)throws Exception{
-        return diaryMapper.listDiary(userId);
-    }
 
-    @Override
-    public int addDiary(Diary diary)throws Exception{
-        return diaryMapper.addDiary(diary);
-        //return userMapper.updateDiary(diary);
-    }
-    @Override
-    public int refresh(int id)throws Exception{
-        List<Diary> list=diaryMapper.listDiary(id);
-        System.out.println(list);
-        ArrayList li = new ArrayList();
-        for(int i = 0; i < list.size(); i++){
-            Diary diary=list.get(i);
-            li.add(String.valueOf(diary.getId()));
-        }
-        String str= StringUtils.join(li,',');
-        return userMapper.updateDiary(id,str);
-    }
+//    @Override
+//    public int refresh(int id)throws Exception{
+//        List<Diary> list=diaryMapper.listDiary(id);
+//        System.out.println(list);
+//        ArrayList li = new ArrayList();
+//        for(int i = 0; i < list.size(); i++){
+//            Diary diary=list.get(i);
+//            li.add(String.valueOf(diary.getId()));
+//        }
+//        String str= StringUtils.join(li,',');
+//        return userMapper.updateDiary(id,str);
+//    }
 
-    @Override
-    public int deleteDiary(int id)throws Exception{
-        return diaryMapper.deleteDiary(id);
-    }
-    @Override
-    public int updateDiary(Diary diary)throws Exception{
-        return diaryMapper.updateDiary(diary);
-    }
 }
