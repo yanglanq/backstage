@@ -13,7 +13,8 @@ spring:
   mvc:
     static-path-pattern: /img/**
   resources:
-    static-locations: file:E://yfn/
+#    static-locations: file:/www/wwwroot/yanglq.xyz/images
+    static-locations: file:e:/yfn
 server:
   port: 4430
   max-http-header-size: 102400

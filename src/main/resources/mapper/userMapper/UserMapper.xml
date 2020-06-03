@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.join.TinyProgram.mapper.msgMapper.msgMapper">
-    <resultMap id="msg" type="com.join.TinyProgram.entity.Msg">
+<mapper namespace="com.join.TinyProgram.mapper.userMapper.UserMapper">
+    <resultMap id="user" type="com.join.TinyProgram.entity.user.User">
         <id property="id" column="id"/>
-        <result property="msg" column="msg"/>
+        <result property="username" column="username"/>
+        <result property="sex" column="sex"/>
     </resultMap>
 
-    <select id="getAll" resultType="com.join.TinyProgram.entity.Msg">
+    <select id="listUser" resultType="com.join.TinyProgram.entity.user.User">
         SELECT *
-        FROM t_msg
+        FROM t_user
     </select>
-
-
 
     <!--<select id="listFeelBack" resultType="feelBack">-->
     <!--SELECT *-->
@@ -38,16 +37,16 @@
     <!--WHERE id=#{user.id}-->
     <!--</update>-->
 
-    <!--<update id="updateReport">-->
-    <!--UPDATE t_report-->
-    <!--SET score=#{report.score},point=#{report.point}-->
-    <!--WHERE id=#{report.id}-->
-    <!--</update>-->
+    <update id="updateDiary">
+    UPDATE t_user
+    SET diary=#{diary}
+    WHERE id=#{id}
+    </update>
 
-    <!--<insert id="addReport">-->
-    <!--INSERT INTO t_report-->
-    <!--(class_name,teacher,stu_id,score,point,credit)-->
-    <!--VALUES (#{report.class_name},#{report.teacher},-->
-    <!--#{report.stu_id},#{report.score},#{report.point},#{report.credit})-->
-    <!--</insert>-->
+    <insert id="addUser">
+    INSERT INTO t_user
+    (username,headUrl,path,sex)
+    VALUES (#{user.username},#{user.headUrl},
+    #{user.path},#{user.sex})
+    </insert>
 </mapper>

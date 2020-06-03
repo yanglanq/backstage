@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.join.TinyProgram.mapper.diary.DiaryMapper">
+    <resultMap id="diary" type="com.join.TinyProgram.entity.diary.Diary">
+        <id property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="title" column="title"/>
+    </resultMap>
+
+    <select id="listDiary" resultType="com.join.TinyProgram.entity.diary.Diary">
+        SELECT *
+        FROM t_diary
+        Where userId=#{userId}
+    </select>
+
+
+
+    <!--<select id="listFeelBack" resultType="feelBack">-->
+    <!--SELECT *-->
+    <!--FROM t_feelback-->
+    <!--</select>-->
+
+    <!--<update id="updateFeelBack">-->
+    <!--UPDATE t_feelback-->
+    <!--SET status=#{feelback.status}-->
+    <!--WHERE id=#{feelback.id}-->
+    <!--</update>-->
+
+    <delete id="deleteDiary">
+    DELETE FROM t_diary
+    WHERE id=#{id}
+    </delete>
+
+
+
+    <!--<update id="updateUser">-->
+    <!--UPDATE t_user-->
+    <!--SET major=#{user.major},college=#{user.college}-->
+    <!--WHERE id=#{user.id}-->
+    <!--</update>-->
+
+    <update id="updateDiary">
+    UPDATE t_diary
+    SET title=#{diary.title},inside=#{diary.inside},picUrl=#{diary.picUrl},path=#{diary.path},date=#{diary.date}
+    WHERE id=#{diary.id}
+    </update>
+
+    <insert id="addDiary">
+    INSERT INTO t_diary
+    (userId,title,inside,picUrl,path,date)
+    VALUES (#{diary.userId},#{diary.title},
+    #{diary.inside},#{diary.picUrl},#{diary.path},#{diary.date})
+    </insert>
+</mapper>
