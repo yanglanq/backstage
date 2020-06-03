@@ -34,6 +34,16 @@ public class Succulent {
 
     private String dormancy;
 
+    private String Reproduction;
+
+    public String getReproduction() {
+        return Reproduction;
+    }
+
+    public void setReproduction(String reproduction) {
+        Reproduction = reproduction;
+    }
+
     public Integer getPlantid() {
         return plantid;
     }

@@ -76,7 +76,7 @@ public class SucculentController {
         try{
             Succulent succulent = new Succulent();
             succulent.setFeature(feature);
-            return new ResponseBean(true,succulentService.searchByword(succulent));
+            return new ResponseBean(true,succulentService.searchByword(succulent))  ;
         }catch (NullPointerException e){
             return new ResponseBean(false,CommonErrorEnum.DATABASE_ERROR);
         }
