@@ -18,11 +18,11 @@ import java.util.Date;
 public class UserTest {
     @Autowired
     UserController userController;
-    @Test
-    public void listAllTest()throws Exception {
-        System.out.println(userController.listDiary(1));
-
-    }
+//    @Test
+//    public void listAllTest()throws Exception {
+//        System.out.println(userController.listDiary(1));
+//
+//    }
     @Test
     public void addDiaryTest()throws Exception {
         Diary diary=new Diary();
@@ -30,7 +30,7 @@ public class UserTest {
         diary.setUserId(2);
         diary.setDate(date);
         diary.setTitle("test22");
-        System.out.println(userController.addDiary(diary));
+        //System.out.println(userController.addDiary(diary));
 
     }
     @Test
@@ -39,17 +39,17 @@ public class UserTest {
         System.out.println(userController.refreshDiary(id));
 
     }
-    @Test
-    public void updateDiaryTest()throws Exception {
-        Diary diary=new Diary();
-        Date date=new Date();
-        diary.setId(2);
-        diary.setUserId(1);
-        diary.setDate(date);
-        diary.setTitle("happy");
-        System.out.println(userController.updateDiary(diary));
-
-    }
+//    @Test
+//    public void updateDiaryTest()throws Exception {
+//        Diary diary=new Diary();
+//        Date date=new Date();
+//        diary.setId(2);
+//        diary.setUserId(1);
+//        diary.setDate(date);
+//        diary.setTitle("happy");
+//        System.out.println(userController.updateDiary(diary));
+//
+//    }
     @Test
     public void addUserTest()throws Exception {
         User user=new User();
