@@ -1,9 +1,11 @@
 package com.join.TinyProgram.mapper.diary;
 import com.join.TinyProgram.entity.diary.Diary;
+import com.join.TinyProgram.entity.img.Img;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 /**
  * @Author: Yangfn
@@ -21,7 +23,15 @@ public interface DiaryMapper {
      * @return
      * @throws Exception
      */
-    public int addDiary(@Param("diary")Diary diary)throws Exception;
+    public int addDiary(Diary diary)throws Exception;
+
+    /**
+     * 增加日记
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public int addImg(@Param("img")Img img)throws Exception;
 
     /**
      * 删除日记
@@ -44,5 +54,5 @@ public interface DiaryMapper {
      * @return
      * @throws Exception
      */
-    public List<Diary> listDiary(@Param("userId")int userId)throws Exception;
+    public List<Diary> listDiary(@Param("bid")int bid)throws Exception;
 }

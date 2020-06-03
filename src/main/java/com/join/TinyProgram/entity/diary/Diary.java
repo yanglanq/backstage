@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Diary {
     private int id;
-    private int userId;
+    private int bid;
     private String title;
     private String inside;
     private Date date;
@@ -25,12 +25,12 @@ public class Diary {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getBid() {
+        return bid;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setBid(int bid) {
+        this.bid = bid;
     }
 
     public String getTitle() {
@@ -77,7 +77,7 @@ public class Diary {
     public String toString() {
         return "Diary{" +
                 "id=" + id +
-                ", userId=" + userId +
+                ", bid=" + bid +
                 ", title='" + title + '\'' +
                 ", inside='" + inside + '\'' +
                 ", date=" + date +
