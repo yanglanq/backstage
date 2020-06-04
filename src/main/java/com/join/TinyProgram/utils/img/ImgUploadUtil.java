@@ -16,10 +16,9 @@ import java.util.Date;
  */
 public class ImgUploadUtil {
 
-    public boolean imgUpload(MultipartFile file,String path){
+    public String imgUpload(MultipartFile file,String path){
         if (file.isEmpty()) {
-            System.out.println("文件为空");
-            return false;
+            return null;
                    }
         //String fileName = filename;
         //file.getOriginalFilename();  // 文件名
@@ -29,7 +28,7 @@ public class ImgUploadUtil {
         String fileName = file.getOriginalFilename();
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(sdf.format(new Date()));
+        //System.out.println(sdf.format(new Date()));
         String filename=getRandom()+getMD5String(sdf.format(new Date()))+suffixName;
         path=path+filename;
         File dest = new File(path);
@@ -41,9 +40,7 @@ public class ImgUploadUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //String filename = "/temp-rainy/" + fileName;
-       // model.addAttribute("filename", filename);
-        return true;
+        return filename;
     }
 
     public static String getRandom() {
