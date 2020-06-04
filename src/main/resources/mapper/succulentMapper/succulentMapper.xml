@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.join.TinyProgram.mapper.succulentMapper.SucculentMapper">
+
+    <select id="getAll" resultType="com.join.TinyProgram.entity.succulent.Succulent">
+        SELECT *
+        FROM t_succulent
+    </select>
+    
+    <insert id="addNew" parameterType="com.join.TinyProgram.entity.succulent.Succulent">
+        insert into t_succulent(imgUrl,pname,alias,florescence,classification,intro,feature,habits)
+        values (#{imgUrl},#{pname},#{alias},#{florescence},#{classification},#{intro},#{feature},#{habits})
+    </insert>
+
+    <select id="searchByword" resultType="com.join.TinyProgram.entity.succulent.Succulent">
+        SELECT *
+        FROM t_succulent
+        where (intro like concat('%',#{word},'%')) or (pname like concat('%',#{word},'%')) or (alias like concat('%',#{word},'%'))
+    </select>
+
+    <delete id="delete">
+        delete from t_succulent
+        where plantid = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.join.TinyProgram.entity.succulent.Succulent">
+        update t_succulent
+        set pname = #{pname},alias = #{alias},florescence = #{florescence},classification = #{classification},
+        intro = #{intro},feature = #{feature},habits = #{habits}
+        where plantid = #{plantid}
+    </update>
+    
+    <insert id="addSearch">
+        insert into t_search (word, num)
+        values (#{word}, 1)
+        ON DUPLICATE KEY UPDATE num = num + 1;
+    </insert>
+
+    <select id="getHotWord" resultType="java.lang.String">
+        select word
+        from t_search
+        order by num desc
+    </select>
+</mapper>

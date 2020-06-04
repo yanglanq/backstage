@@ -180,6 +180,7 @@ public class DiaryController {
                 System.out.println("文件为空");
                 break;
             }
+
             String path="/www/wwwroot/yanglq.xyz/images/userImg/diary/";
             String picUrl="/img/userImg/diary/";
             //本地：
@@ -193,5 +194,6 @@ public class DiaryController {
             diaryService.addImg(img);
         }
         return 1;
+
     }
 }

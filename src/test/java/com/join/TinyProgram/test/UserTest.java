@@ -37,6 +37,7 @@ public class UserTest {
         diaryService.addDiary(diary);
         System.out.println(diary.getId());
 
+
     }
 //    @Test
 //    public void refreshTest()throws Exception {
