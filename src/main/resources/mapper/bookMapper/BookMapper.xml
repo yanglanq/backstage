@@ -8,18 +8,11 @@
         <result property="name" column="name"/>
     </resultMap>
 
-    <!--<select id="listBook" resultType="com.join.TinyProgram.entity.book.Book">-->
-        <!--SELECT *-->
-        <!--FROM t_book-->
-        <!--Where uid=#{uid}-->
-    <!--</select>-->
-
-
-
-    <!--<select id="listFeelBack" resultType="feelBack">-->
-    <!--SELECT *-->
-    <!--FROM t_feelback-->
-    <!--</select>-->
+    <select id="listBook" resultType="com.join.TinyProgram.entity.book.Book">
+        SELECT *
+        FROM t_book
+        Where uid=#{uid}
+    </select>
 
     <!--<update id="updateFeelBack">-->
     <!--UPDATE t_feelback-->
@@ -27,18 +20,22 @@
     <!--WHERE id=#{feelback.id}-->
     <!--</update>-->
 
-    <!--<delete id="deleteDiary">-->
-    <!--DELETE FROM t_diary-->
-    <!--WHERE id=#{id}-->
-    <!--</delete>-->
+    <delete id="deleteBook">
+    DELETE FROM t_book
+    WHERE id=#{id}
+    </delete>
 
+    <update id="updateBook">
+    UPDATE t_book
+    SET name=#{book.name},headUrl=#{book.headUrl},path=#{book.path}
+    WHERE id=#{book.id}
+    </update>
 
-
-    <!--<update id="updateUser">-->
-    <!--UPDATE t_user-->
-    <!--SET major=#{user.major},college=#{user.college}-->
-    <!--WHERE id=#{user.id}-->
-    <!--</update>-->
+    <update id="freshBook">
+    UPDATE t_book
+    SET date=#{date}
+    WHERE id=#{id}
+    </update>
 
     <!--<update id="updateDiary">-->
     <!--UPDATE t_diary-->
@@ -46,10 +43,11 @@
     <!--WHERE id=#{diary.id}-->
     <!--</update>-->
 
-    <!--<insert id="addDiary">-->
-    <!--INSERT INTO t_diary-->
-    <!--(userId,title,inside,picUrl,path,date)-->
-    <!--VALUES (#{diary.userId},#{diary.title},-->
-    <!--#{diary.inside},#{diary.picUrl},#{diary.path},#{diary.date})-->
-    <!--</insert>-->
+    <insert id="addBook">
+    INSERT INTO t_book
+    (uid,name,headUrl,path,date)
+    VALUES (#{book.uid},#{book.name},
+    #{book.headUrl},#{book.path},#{book.date})
+    </insert>
+
 </mapper>

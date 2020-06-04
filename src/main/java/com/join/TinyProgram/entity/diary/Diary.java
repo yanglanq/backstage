@@ -9,12 +9,10 @@ import java.util.Date;
  */
 public class Diary {
     private int id;
-    private int userId;
+    private int bid;
     private String title;
     private String inside;
     private Date date;
-    private String picUrl;
-    private String path;
 
 
     public int getId() {
@@ -25,12 +23,12 @@ public class Diary {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getBid() {
+        return bid;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setBid(int bid) {
+        this.bid = bid;
     }
 
     public String getTitle() {
@@ -57,32 +55,15 @@ public class Diary {
         this.date = date;
     }
 
-    public String getPicUrl() {
-        return picUrl;
-    }
-
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
 
     @Override
     public String toString() {
         return "Diary{" +
                 "id=" + id +
-                ", userId=" + userId +
+                ", bid=" + bid +
                 ", title='" + title + '\'' +
                 ", inside='" + inside + '\'' +
                 ", date=" + date +
-                ", picUrl='" + picUrl + '\'' +
-                ", path='" + path + '\'' +
                 '}';
     }
 }
