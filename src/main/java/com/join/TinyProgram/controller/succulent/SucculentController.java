@@ -1,6 +1,6 @@
 package com.join.TinyProgram.controller.succulent;
 
-import com.github.pagehelper.PageInfo;
+//import com.github.pagehelper.PageInfo;
 import com.join.TinyProgram.entity.succulent.Succulent;
 import com.join.TinyProgram.service.succulentService.SucculentService;
 import com.join.TinyProgram.utils.img.FileUpload;
@@ -121,15 +121,15 @@ public class SucculentController {
         return map;
     }
 
-    @ResponseBody
-    @RequestMapping("/getByPage")
-    public Object getSucculentByPage(@RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum, @RequestParam(value = "size",defaultValue = "10")Integer size){
-        try {
-            return new ResponseBean(true,succulentService.getSucculentByPage(pageNum,size));
-        }catch (Exception e){
-            return new ResponseBean(false, CommonErrorEnum.FAIL_GETDATA);
-        }
-    }
+//    @ResponseBody
+//    @RequestMapping("/getByPage")
+//    public Object getSucculentByPage(@RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum, @RequestParam(value = "size",defaultValue = "10")Integer size){
+//        try {
+//            return new ResponseBean(true,succulentService.getSucculentByPage(pageNum,size));
+//        }catch (Exception e){
+//            return new ResponseBean(false, CommonErrorEnum.FAIL_GETDATA);
+//        }
+//    }
 
     @ResponseBody
     @RequestMapping("/searchByWord")
