@@ -13,8 +13,6 @@ public class Diary {
     private String title;
     private String inside;
     private Date date;
-    private String picUrl;
-    private String path;
 
 
     public int getId() {
@@ -57,21 +55,6 @@ public class Diary {
         this.date = date;
     }
 
-    public String getPicUrl() {
-        return picUrl;
-    }
-
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
 
     @Override
     public String toString() {
@@ -81,8 +64,6 @@ public class Diary {
                 ", title='" + title + '\'' +
                 ", inside='" + inside + '\'' +
                 ", date=" + date +
-                ", picUrl='" + picUrl + '\'' +
-                ", path='" + path + '\'' +
                 '}';
     }
 }

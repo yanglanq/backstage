@@ -7,11 +7,11 @@
         <result property="bid" column="bid"/>
         <result property="title" column="title"/>
     </resultMap>
-    <!--<resultMap id="img" type="com.join.TinyProgram.entity.img.Img">-->
-        <!--<id property="id" column="id"/>-->
-        <!--<result property="bid" column="bid"/>-->
-        <!--<result property="picUrl" column="picUrl"/>-->
-    <!--</resultMap>-->
+    <resultMap id="img" type="com.join.TinyProgram.entity.img.Img">
+        <id property="id" column="id"/>
+        <result property="bid" column="bid"/>
+        <result property="picUrl" column="picUrl"/>
+    </resultMap>
 
     <select id="listDiary" resultType="com.join.TinyProgram.entity.diary.Diary">
         SELECT *
@@ -27,19 +27,9 @@
 
     <update id="updateDiary">
     UPDATE t_diary
-    SET title=#{diary.title},inside=#{diary.inside},picUrl=#{diary.picUrl},path=#{diary.path},date=#{diary.date}
+    SET title=#{diary.title},inside=#{diary.inside},date=#{diary.date}
     WHERE id=#{diary.id}
     </update>
-
-    <!--<insert id="addDiary" parameterType="com.join.TinyProgram.entity.diary.Diary">-->
-        <!--<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">-->
-            <!--SELECT  LAST_INSERT_ID() AS id-->
-        <!--</selectKey>-->
-    <!--INSERT INTO t_diary-->
-    <!--(bid,title,inside,date)-->
-    <!--VALUES (#{diary.bid},#{diary.title},-->
-    <!--#{diary.inside},#{diary.date})-->
-    <!--</insert>-->
 
     <insert id="addDiary" parameterType="com.join.TinyProgram.entity.diary.Diary"
             useGeneratedKeys="true"  keyProperty="id">
@@ -55,5 +45,15 @@
     VALUES (#{img.did},#{img.picUrl},#{img.path})
     </insert>
 
+    <delete id="deleteImg">
+    DELETE FROM t_img
+    WHERE id=#{id}
+    </delete>
+
+    <select id="listImg" resultType="com.join.TinyProgram.entity.img.Img">
+        SELECT *
+        FROM t_img
+        Where did=#{did}
+    </select>
 
 </mapper>

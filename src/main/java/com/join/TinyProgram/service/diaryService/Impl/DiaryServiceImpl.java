@@ -9,6 +9,7 @@ import com.join.TinyProgram.service.diaryService.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,6 +63,20 @@ public class DiaryServiceImpl implements DiaryService {
     @Override
     public int addImg(Img img)throws Exception{
         return diaryMapper.addImg(img);
+    }
+
+    @Override
+    public int deleteImg(int id)throws Exception{
+        return diaryMapper.deleteImg(id);
+    }
+    @Override
+    public List<Img> listImg(int did)throws Exception{
+        return diaryMapper.listImg(did);
+    }
+    @Override
+    public int freshBook(int id)throws Exception{
+        Date date=new Date();
+        return bookMapper.freshBook(id,date);
     }
 
 

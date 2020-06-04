@@ -17,6 +17,10 @@ public class Img {
         this.picUrl=picUrl;
     }
 
+    public Img(){
+
+    }
+
 
     public int getId() {
         return id;

@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,6 +38,15 @@ public interface BookMapper {
      * @throws Exception
      */
     public int updateBook(@Param("book")Book book)throws Exception;
+
+    /**
+     * 修改日记
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public int freshBook(@Param("id")int id, @Param("date")Date date)throws Exception;
+
 
     /**
      * 删除日记

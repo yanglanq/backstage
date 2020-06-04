@@ -14,8 +14,6 @@
         Where uid=#{uid}
     </select>
 
-
-
     <!--<update id="updateFeelBack">-->
     <!--UPDATE t_feelback-->
     <!--SET status=#{feelback.status}-->
@@ -27,12 +25,16 @@
     WHERE id=#{id}
     </delete>
 
-
-
     <update id="updateBook">
     UPDATE t_book
     SET name=#{book.name},headUrl=#{book.headUrl},path=#{book.path}
     WHERE id=#{book.id}
+    </update>
+
+    <update id="freshBook">
+    UPDATE t_book
+    SET date=#{date}
+    WHERE id=#{id}
     </update>
 
     <!--<update id="updateDiary">-->
@@ -43,8 +45,9 @@
 
     <insert id="addBook">
     INSERT INTO t_book
-    (uid,name,headUrl,path)
+    (uid,name,headUrl,path,date)
     VALUES (#{book.uid},#{book.name},
-    #{book.headUrl},#{book.path})
+    #{book.headUrl},#{book.path},#{book.date})
     </insert>
+
 </mapper>

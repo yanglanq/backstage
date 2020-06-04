@@ -55,4 +55,18 @@ public interface DiaryMapper {
      * @throws Exception
      */
     public List<Diary> listDiary(@Param("bid")int bid)throws Exception;
+    /**
+     *
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public List<Img> listImg(@Param("did")int did)throws Exception;
+    /**
+     * 删除
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public int deleteImg(@Param("id")int id)throws Exception;
 }

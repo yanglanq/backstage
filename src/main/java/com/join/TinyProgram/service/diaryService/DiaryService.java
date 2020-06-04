@@ -29,4 +29,10 @@ public interface DiaryService {
     public int updateBook(Book book)throws Exception;
 
     public int deleteBook(int id)throws Exception;
+
+    public int deleteImg(int id)throws Exception;
+
+    public int freshBook(int id)throws Exception;
+
+    public List<Img> listImg(int did)throws Exception;
 }
