@@ -2,9 +2,10 @@ package com.join.TinyProgram.service.succulentService.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.join.TinyProgram.entity.Succulent;
+import com.join.TinyProgram.entity.succulent.Succulent;
 import com.join.TinyProgram.mapper.succulentMapper.SucculentMapper;
 import com.join.TinyProgram.service.succulentService.SucculentService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,31 @@ public class SucculentServiceImpl implements SucculentService {
     }
 
     @Override
-    public List<Succulent> searchByword(Succulent succulent){
-        return succulentMapper.searchByword(succulent);
+    public List<Succulent> searchByword(String word){
+        List<Succulent> list = succulentMapper.searchByword(word);
+        if(list.size() != 0){
+            succulentMapper.addSearch(word);
+        }
+        return list;
+    }
+
+    @Override
+    public boolean delete(Integer id){
+        return succulentMapper.delete(id);
+    }
+
+    @Override
+    public boolean update(Succulent succulent){
+        return succulentMapper.update(succulent);
+    }
+
+    @Override
+    public boolean addSearch(String word){
+        return succulentMapper.addSearch(word);
+    }
+
+    @Override
+    public List<String> getHotWord(){
+        return succulentMapper.getHotWord();
     }
 }

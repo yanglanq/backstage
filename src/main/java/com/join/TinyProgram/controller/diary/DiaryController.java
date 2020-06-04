@@ -51,18 +51,18 @@ public class DiaryController {
     @RequestMapping("/addDiary")
     public int addDiary(@RequestParam(value = "file") MultipartFile files[],Diary diary)throws Exception{
         ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
-        for(MultipartFile file:files){
+        for(MultipartFile file:files) {
             if (file.isEmpty()) {
                 System.out.println("文件为空");
                 break;
             }
             //String path="/www/wwwroot/yanglq.xyz/images/userImg/diary/";
-            String path="e:/yfn/diary/";
-            if (!imgUploadUtil.imgUpload(file,path)){
-                return 0;
-            }
+            String path = "e:/yfn/diary/";
+//            if (!imgUploadUtil.imgUpload(file,path)){
+//                return 0;
+//            }
         }
-        return diaryService.addDiary(diary);
-        //return 1;
+            return diaryService.addDiary(diary);
+            //return 1;
     }
 }

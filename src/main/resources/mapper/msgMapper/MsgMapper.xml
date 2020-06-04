@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.join.TinyProgram.mapper.msg.MsgMapper">
+
+    <select id="getAll" resultType="com.join.TinyProgram.entity.msg.Msg">
+        SELECT *
+        FROM t_msg
+    </select>
+
+    <delete id="delete">
+        delete from t_msg
+        where id = #{id}
+    </delete>
+
+    <update id="update">
+        update  t_msg
+        set msg = #{msg}
+        where id = #{id}
+    </update>
+    
+    <insert id="addNew">
+        insert into t_msg(msg)
+        values (#{msg})
+    </insert>
+</mapper>

@@ -36,7 +36,7 @@ public class UserTest {
     @Test
     public void refreshTest()throws Exception {
         int id=1;
-        System.out.println(userController.refreshDiary(id));
+//        System.out.println(userController.refreshDiary(id));
 
     }
 //    @Test
