@@ -102,7 +102,7 @@ public class SucculentController {
 //        String picUrl="/img/SucculentImg/";
         FileUpload fileUpload = new FileUpload();
         String url1 = fileUpload.getHtmlPicture(url,path,null);
-        String finalurl = picUrl + url;
+        String finalurl = picUrl + url1;
         succulent.setImgUrl(finalurl);
         try{
             if(succulent.getPname().equals("")){
