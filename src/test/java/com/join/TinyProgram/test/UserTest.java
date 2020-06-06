@@ -56,12 +56,12 @@ public class UserTest {
 //        System.out.println(userController.updateDiary(diary));
 //
 //    }
-    @Test
-    public void addUserTest()throws Exception {
-        User user=new User();
-        user.setUsername("yfn2");
-        user.setSex("女");
-        System.out.println(userController.addUser(user));
-
-    }
+//    @Test
+//    public void addUserTest()throws Exception {
+//        User user=new User();
+//        user.setUsername("yfn2");
+//        user.setSex("女");
+//        System.out.println(userController.addUser(user));
+//
+//    }
 }

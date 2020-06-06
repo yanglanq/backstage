@@ -4,6 +4,7 @@ import com.join.TinyProgram.entity.pic.Pic;
 import com.join.TinyProgram.service.picService.PicService;
 import com.join.TinyProgram.utils.img.ImgUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * author dongml
@@ -21,6 +23,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/pic")
 public class PicController {
+    private Pic pic;
 
     @Autowired
     private PicService picService;
@@ -29,6 +32,20 @@ public class PicController {
     @RequestMapping("/getAll")
     public List<Pic> getAll(){
         return picService.getAll();
+    }
+
+    @ResponseBody
+    @RequestMapping("/userGetMsg")
+    public Pic userGetMsg(){
+        return pic;
+    }
+
+    @Scheduled(cron = "0 6 * * *")
+    @ResponseBody
+    @RequestMapping("/getByRand")
+    public Pic getByRand(){
+            pic = picService.getByRand();
+            return pic;
     }
 
     @ResponseBody

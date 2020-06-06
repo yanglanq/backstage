@@ -19,4 +19,5 @@ public interface PicMapper {
     boolean add(Integer num);
     boolean minus(Integer num);
     Integer getIdPre();
+    Pic getByRand();
 }

@@ -11,17 +11,6 @@ public class Img {
     private String picUrl;
     private String path;
 
-    public Img(int did,String picUrl,String path){
-        this.did=did;
-        this.path=path;
-        this.picUrl=picUrl;
-    }
-
-    public Img(){
-
-    }
-
-
     public int getId() {
         return id;
     }
@@ -54,6 +43,15 @@ public class Img {
         this.path = path;
     }
 
+    public Img(int did,String picUrl,String path){
+        this.did=did;
+        this.path=path;
+        this.picUrl=picUrl;
+    }
+
+    public Img(){
+
+    }
     @Override
     public String toString() {
         return "Img{" +

@@ -17,4 +17,5 @@ public interface PicService {
     boolean update(String url,Integer id,String intro,Integer num);
     boolean addNew(String url,String intro,Integer num);
     Integer getIdPre();
+    Pic getByRand();
 }

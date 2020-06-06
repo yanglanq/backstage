@@ -46,4 +46,9 @@ public class PicServiceImpl implements PicService {
     public Integer getIdPre(){
         return picMapper.getIdPre();
     }
+
+    @Override
+    public Pic getByRand(){
+        return picMapper.getByRand();
+    }
 }
