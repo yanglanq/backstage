@@ -31,11 +31,11 @@ public class UserController {
     public List<User> listAll()throws Exception{
         return userService.listAll();
     }
-    /**
-     *登录~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     * @return
-     * @throws Exception
-     */
+//    /**
+//     *登录~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//     * @return
+//     * @throws Exception
+//     */
 //    @RequestMapping("/login")
 //    public User login(String username)throws Exception{
 //            return userService.login(i);
@@ -44,7 +44,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/addUser")
     public int addUser(User user)throws Exception{
-        return userService.addUser(user);
+        return  userService.addUser(user);
     }
 
 

@@ -8,13 +8,10 @@ package com.join.TinyProgram.entity.user;
 public class User {
 
     private int id;
+    private String openid;
     private String username;
-    private String diary;
     private String sex;
     private String headUrl;
-    private String path;
-    private int status;
-    private String password;
 
     public int getId() {
         return id;
@@ -32,13 +29,6 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getSex() {
         return sex;
@@ -56,41 +46,22 @@ public class User {
         this.headUrl = headUrl;
     }
 
-    public String getPath() {
-        return path;
+    public String getOpenid() {
+        return openid;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getDiary() {
-        return diary;
-    }
-
-    public void setDiary(String diary) {
-        this.diary = diary;
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", openid='" + openid + '\'' +
                 ", username='" + username + '\'' +
-                ", diary='" + diary + '\'' +
                 ", sex='" + sex + '\'' +
                 ", headUrl='" + headUrl + '\'' +
-                ", path='" + path + '\'' +
-                ", status=" + status +
-                ", password='" + password + '\'' +
                 '}';
     }
 }

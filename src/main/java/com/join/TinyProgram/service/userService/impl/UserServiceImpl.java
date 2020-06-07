@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
      * @throws Exception
      */
     @Override
-    public User login(User user) throws Exception{
-        return userMapper.login(user);
+    public int login(User user) throws Exception{
+        return userMapper.addUser(user);
     }
 
     /**
@@ -46,65 +46,19 @@ public class UserServiceImpl implements UserService {
         return userMapper.addUser(user);
     }
 
-//    /**
-//     * 修改个人信息
-//     * @param user
-//     * @return
-//     * @throws Exception
-//     */
-//    @Override
-//    public int update(User user) throws Exception{
-//        return userMapper.updateUser(user);
-//    }
 
-    /**
-     * 修改状态
-     * @param id
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public int updateStatus(int id,int status) throws Exception{
-        return userMapper.updateStatus(id,status);
-    }
     @Override
     public List<User> listAll()throws Exception{
         return userMapper.listUser();
     }
     @Override
-    public List<User> queryUser(String card)throws Exception{
-        return userMapper.queryUser(card);
+    public List<User> queryUser(String openid)throws Exception{
+        return userMapper.queryUser(openid);
     }
 
     @Override
-    public int delete(String card)throws Exception{
-        return userMapper.deleteUser(card);
+    public int delete(int id)throws Exception{
+        return userMapper.deleteUser(id);
     }
-
-    /**
-     * 上传头像
-     * @param
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public int uploadHead(int id,String path,String headUrl) throws Exception{
-        return userMapper.uploadHead(id,path,headUrl);
-
-    }
-
-
-//    @Override
-//    public int refresh(int id)throws Exception{
-//        List<Diary> list=diaryMapper.listDiary(id);
-//        System.out.println(list);
-//        ArrayList li = new ArrayList();
-//        for(int i = 0; i < list.size(); i++){
-//            Diary diary=list.get(i);
-//            li.add(String.valueOf(diary.getId()));
-//        }
-//        String str= StringUtils.join(li,',');
-//        return userMapper.updateDiary(id,str);
-//    }
 
 }

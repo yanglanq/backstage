@@ -79,8 +79,11 @@ public class DiaryController {
     @ResponseBody
     @RequestMapping("/updateBook")
     public int updateBook(@RequestParam(value = "file") MultipartFile file,Book book)throws Exception{
-        File file1=new File(book.getPath());
-        file1.delete();
+        if(book.getPath()!=null){
+            System.out.println("path为空");
+            File file1=new File(book.getPath());
+            file1.delete();
+        }
         ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
         String filename=null;
         if (file.isEmpty()) {

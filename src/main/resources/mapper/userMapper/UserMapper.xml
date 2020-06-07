@@ -13,40 +13,24 @@
         FROM t_user
     </select>
 
-    <!--<select id="listFeelBack" resultType="feelBack">-->
-    <!--SELECT *-->
-    <!--FROM t_feelback-->
-    <!--</select>-->
-
-    <!--<update id="updateFeelBack">-->
-    <!--UPDATE t_feelback-->
-    <!--SET status=#{feelback.status}-->
-    <!--WHERE id=#{feelback.id}-->
-    <!--</update>-->
-
-    <!--<delete id="deleteFeelBack">-->
-    <!--DELETE FROM t_feelback-->
-    <!--WHERE id=#{id}-->
-    <!--</delete>-->
 
 
-
-    <!--<update id="updateUser">-->
-    <!--UPDATE t_user-->
-    <!--SET major=#{user.major},college=#{user.college}-->
-    <!--WHERE id=#{user.id}-->
-    <!--</update>-->
-
-    <update id="updateDiary">
-    UPDATE t_user
-    SET diary=#{diary}
+    <delete id="deleteUser">
+    DELETE FROM t_user
     WHERE id=#{id}
+    </delete>
+
+
+    <update id="updateUser">
+    UPDATE t_user
+    SET (name,headUrl,sex)
+    values (#{user.name},#{user.headUrl},#{user.sex})
+    WHERE id=#{user.id}
     </update>
 
-    <insert id="addUser">
+    <insert id="addUser" parameterType="com.join.TinyProgram.entity.user.User" useGeneratedKeys="true"  keyProperty="id">
     INSERT INTO t_user
-    (username,headUrl,path,sex)
-    VALUES (#{user.username},#{user.headUrl},
-    #{user.path},#{user.sex})
+    openid
+    VALUES (#{openid})
     </insert>
 </mapper>
