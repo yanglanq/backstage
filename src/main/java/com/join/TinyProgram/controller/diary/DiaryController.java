@@ -54,33 +54,17 @@ public class DiaryController {
 
     @ResponseBody
     @RequestMapping("/addBook")
-    public int addBook(@RequestParam(value = "file") MultipartFile file,Book book)throws Exception{
+    public int addBook(Book book)throws Exception{
         Date date=new Date();
         book.setDate(date);
-        ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
-        String filename=null;
-        if (file.isEmpty()) {
-            System.out.println("文件为空");
-        }
-        String path="/www/wwwroot/yanglq.xyz/images/userImg/book/";
-        String picUrl="/img/userImg/book/";
-//        String path="e:/yfn/diary/";
-//        String picUrl="/img/diary/";
-        filename=imgUploadUtil.imgUpload(file,path);
-        if (filename==null){
-            return -1;
-        }
-        //diaryService.uploadHead(picUrl+filename,path+filename);
-        book.setHeadUrl(picUrl+filename);
-        book.setPath(path+filename);
         return diaryService.addBook(book);
     }
 
     @ResponseBody
-    @RequestMapping("/updateBook")
+    @RequestMapping(value ="/updateBook",method = RequestMethod.POST)
     public int updateBook(@RequestParam(value = "file") MultipartFile file,Book book)throws Exception{
         if(book.getPath()!=null){
-            System.out.println("path为空");
+            System.out.println("path不为空");
             File file1=new File(book.getPath());
             file1.delete();
         }
@@ -126,7 +110,7 @@ public class DiaryController {
         return diaryService.deleteDiary(id);
     }
     @ResponseBody
-    @RequestMapping("/updateDiary")
+    @RequestMapping(value ="/updateDiary",method = RequestMethod.POST)
     public int updateDiary(@RequestParam(value = "file") MultipartFile files[],Diary diary)throws Exception{
         Date date=new Date();
         int id=diary.getId();

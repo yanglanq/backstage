@@ -1,6 +1,7 @@
 package com.join.TinyProgram.test;
 
 import com.join.TinyProgram.controller.user.UserController;
+import com.join.TinyProgram.entity.book.Book;
 import com.join.TinyProgram.entity.diary.Diary;
 import com.join.TinyProgram.entity.user.User;
 import com.join.TinyProgram.service.diaryService.DiaryService;
@@ -45,17 +46,16 @@ public class UserTest {
 //        System.out.println(userController.refreshDiary(id));
 //
 //    }
-//    @Test
-//    public void updateDiaryTest()throws Exception {
-//        Diary diary=new Diary();
-//        Date date=new Date();
-//        diary.setId(2);
-//        diary.setBid(1);
-//        diary.setDate(date);
-//        diary.setTitle("happy");
-//        System.out.println(userController.updateDiary(diary));
-//
-//    }
+    @Test
+    public void addBookTest()throws Exception {
+        Book book=new Book();
+        book.setName("test");
+        book.setUid(1);
+        Date date=new Date();
+        book.setDate(date);
+        System.out.println(diaryService.addBook(book));
+
+    }
     @Test
     public void addUserTest()throws Exception {
         User user=new User();

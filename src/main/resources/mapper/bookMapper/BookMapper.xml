@@ -43,11 +43,10 @@
     <!--WHERE id=#{diary.id}-->
     <!--</update>-->
 
-    <insert id="addBook">
+    <insert id="addBook" parameterType="com.join.TinyProgram.entity.book.Book" useGeneratedKeys="true"  keyProperty="id">
     INSERT INTO t_book
-    (uid,name,headUrl,path,date)
-    VALUES (#{book.uid},#{book.name},
-    #{book.headUrl},#{book.path},#{book.date})
+    (uid,name,date)
+    VALUES (#{uid},#{name},#{date})
     </insert>
 
 </mapper>
