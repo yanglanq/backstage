@@ -17,7 +17,7 @@ public interface UserService {
 
     public List<User> listAll()throws Exception;
 
-    public List<User> queryUser(String openid)throws Exception;
+    public User queryUser(String openid)throws Exception;
 
     public int delete(int id)throws Exception;
 

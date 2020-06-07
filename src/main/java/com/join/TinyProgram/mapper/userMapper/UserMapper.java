@@ -22,7 +22,7 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public User login(@Param("user")User user) throws Exception;
+    public int updateUser(@Param("user")User user) throws Exception;
 
     /**
      * 注册
@@ -51,6 +51,6 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public List<User> queryUser(@Param("openid")String openid)throws Exception;
+    public User queryUser(@Param("openid")String openid)throws Exception;
 
 }

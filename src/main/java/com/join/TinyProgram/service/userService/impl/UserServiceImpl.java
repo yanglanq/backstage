@@ -32,7 +32,12 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int login(User user) throws Exception{
-        return userMapper.addUser(user);
+        User user1=userMapper.queryUser(user.getOpenid());
+        if(user1==null){
+            userMapper.addUser(user);
+            return (-1)*user.getId();
+        }
+        return user1.getId();
     }
 
     /**
@@ -43,7 +48,8 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int addUser(User user) throws Exception{
-        return userMapper.addUser(user);
+        System.out.println(user);
+        return userMapper.updateUser(user);
     }
 
 
@@ -52,7 +58,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.listUser();
     }
     @Override
-    public List<User> queryUser(String openid)throws Exception{
+    public User queryUser(String openid)throws Exception{
         return userMapper.queryUser(openid);
     }
 

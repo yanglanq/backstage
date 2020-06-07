@@ -40,12 +40,12 @@ public class UserTest {
 
 
     }
-//    @Test
-//    public void refreshTest()throws Exception {
-//        int id=1;
-//        System.out.println(userController.refreshDiary(id));
-//
-//    }
+    @Test
+    public void loginTest()throws Exception {
+        String code="1234";
+        System.out.println(userController.login(code));
+
+    }
     @Test
     public void addBookTest()throws Exception {
         Book book=new Book();
@@ -59,7 +59,9 @@ public class UserTest {
     @Test
     public void addUserTest()throws Exception {
         User user=new User();
+        user.setId(1);
         user.setUsername("yfn2");
+        user.setHeadUrl("url");
         user.setSex("女");
         System.out.println(userController.addUser(user));
 

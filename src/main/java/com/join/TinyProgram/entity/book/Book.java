@@ -14,6 +14,9 @@ public class Book {
     private Date date;
     private String headUrl;
     private String path;
+    private Date water;
+    private String plant;
+    private String description;
 
     public int getId() {
         return id;
@@ -63,6 +66,30 @@ public class Book {
         this.path = path;
     }
 
+    public Date getWater() {
+        return water;
+    }
+
+    public void setWater(Date water) {
+        this.water = water;
+    }
+
+    public String getPlant() {
+        return plant;
+    }
+
+    public void setPlant(String plant) {
+        this.plant = plant;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -72,6 +99,9 @@ public class Book {
                 ", date=" + date +
                 ", headUrl='" + headUrl + '\'' +
                 ", path='" + path + '\'' +
+                ", water=" + water +
+                ", plant='" + plant + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
