@@ -181,36 +181,11 @@ public class DiaryController {
 
     @ResponseBody
     @RequestMapping(value = "/addDiary",method = RequestMethod.POST)
-    public int addDiary(@RequestParam(value = "file") MultipartFile files[],Diary diary)throws Exception{
+    public int addDiary(Diary diary)throws Exception{
         Date date=new Date();
-        int id=-1;
         diary.setDate(date);
         diaryService.addDiary(diary);
-        id=diary.getId();
-        if(id==0){
-            return -2;
-        }
-        ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
-        String filename=null;
-        for(MultipartFile file:files){
-            if (file.isEmpty()) {
-                System.out.println("文件为空");
-                break;
-            }
-
-            String path="/www/wwwroot/yanglq.xyz/images/userImg/diary/";
-            String picUrl="/img/userImg/diary/";
-            //本地：
-//            String path="e:/yfn/diary/";
-//            String picUrl="/img/diary/";
-            filename=imgUploadUtil.imgUpload(file,path);
-            if (filename==null){
-                return -1;
-            }
-            Img img=new Img(id,picUrl+filename,path+filename);
-            diaryService.addImg(img);
-        }
-        return 1;
+        return diary.getId();
     }
 
     public static int exchange(String s){
