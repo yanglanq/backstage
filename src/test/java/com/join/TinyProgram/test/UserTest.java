@@ -1,5 +1,6 @@
 package com.join.TinyProgram.test;
 
+import com.join.TinyProgram.controller.diary.DiaryController;
 import com.join.TinyProgram.controller.user.UserController;
 import com.join.TinyProgram.entity.book.Book;
 import com.join.TinyProgram.entity.diary.Diary;
@@ -20,6 +21,9 @@ import java.util.Date;
 public class UserTest {
     @Autowired
     UserController userController;
+
+    @Autowired
+    DiaryController diaryController;
 
     @Autowired
     DiaryService diaryService;
@@ -52,6 +56,7 @@ public class UserTest {
         book.setName("test");
         book.setUid(1);
         Date date=new Date();
+        book.setWatering("08:30:00");
         book.setDate(date);
         System.out.println(diaryService.addBook(book));
 
@@ -64,6 +69,12 @@ public class UserTest {
         user.setHeadUrl("url");
         user.setSex("女");
         System.out.println(userController.addUser(user));
+
+    }
+    @Test
+    public void wateringTest()throws Exception {
+        int id=2;
+        System.out.println(diaryController.watering(id));
 
     }
 }

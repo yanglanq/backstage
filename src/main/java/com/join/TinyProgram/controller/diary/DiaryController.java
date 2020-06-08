@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -58,6 +60,42 @@ public class DiaryController {
         Date date=new Date();
         book.setDate(date);
         return diaryService.addBook(book);
+    }
+
+    @ResponseBody
+    @RequestMapping("/watering")
+    public List<Book> watering(int id)throws Exception{
+        List<Book> list=diaryService.listBook(id);
+        System.out.println(list);
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
+        String time=format.format(date);
+        System.out.println(time);
+        List<Book> list1=new ArrayList<>();
+        for(Book book:list){
+            System.out.println(book);
+            String w=book.getWatering();
+            System.out.println("1"+w);
+            if (w==null){
+                break;
+            }
+            System.out.println(w);
+            String s[]=w.split(":");
+            String a[]=s[0].split("");
+            int i=exchange(a[0])*10+exchange(a[1]);
+            int i1=i-1;
+            int i2=i+1;
+            String l1=intExchange(i1)+":"+s[1]+":"+s[2];
+            String l2=intExchange(i2)+":"+s[1]+":"+s[2];
+            System.out.println(l1+"   "+l2);
+            if(w!=null){
+                if(l1.compareTo(book.getWatering())<0
+                        &&l2.compareTo(book.getWatering())>0){
+                    list1.add(book);
+                }
+            }
+        }
+        return list1;
     }
 
     @ResponseBody
@@ -181,6 +219,25 @@ public class DiaryController {
             diaryService.addImg(img);
         }
         return 1;
-
     }
+
+    public static int exchange(String s){
+        int foo;
+        try {
+            foo = Integer.parseInt(s);
+        }
+        catch (NumberFormatException e)
+        {
+            foo = 0;
+        }
+
+        return foo;
+    }
+
+    public static String intExchange(int i){
+        String str=String.format("%02d",i);
+        return str;
+    }
+
+
 }

@@ -83,8 +83,11 @@ public class UserController {
             content.split("");
             String s[]=content.split(",");
             String s1[]=s[1].split(":");
-            if(s1[0]=="openid"){
-                openid=s1[1];
+            System.out.println("s1[0]"+s1[0]);
+            System.out.println("s1[1]"+s1[1]);
+            if(s1[0].equals("\"" +"openid"+"\"")){
+                openid =s1[1].replace("\"", "");
+                openid=openid.replace("}","");
                 System.out.println("解析过openid"+openid);
             }
 //            for(String x:s){
