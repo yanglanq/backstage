@@ -1,5 +1,6 @@
 package com.join.TinyProgram.service.picService.impl;
 
+import com.join.TinyProgram.entity.msg.Msg;
 import com.join.TinyProgram.entity.pic.Pic;
 import com.join.TinyProgram.mapper.pic.PicMapper;
 import com.join.TinyProgram.service.picService.PicService;
@@ -48,7 +49,7 @@ public class PicServiceImpl implements PicService {
     }
 
     @Override
-    public Pic getByRand(){
+    public Msg getByRand(){
         return picMapper.getByRand();
     }
 }

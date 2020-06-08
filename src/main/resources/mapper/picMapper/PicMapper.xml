@@ -42,8 +42,8 @@
         where table_name='t_pic'
     </select>
 
-    <select id="getByRand" resultType="com.join.TinyProgram.entity.pic.Pic">
-        select * from t_pic order by rand( ) limit 1
+    <select id="getByRand" resultType="com.join.TinyProgram.entity.msg.Msg">
+        select * from t_msg order by rand( ) limit 1
     </select>
 
 </mapper>

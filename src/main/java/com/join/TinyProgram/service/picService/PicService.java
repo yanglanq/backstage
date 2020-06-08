@@ -1,5 +1,6 @@
 package com.join.TinyProgram.service.picService;
 
+import com.join.TinyProgram.entity.msg.Msg;
 import com.join.TinyProgram.entity.pic.Pic;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,5 @@ public interface PicService {
     boolean update(String url,Integer id,String intro,Integer num);
     boolean addNew(String url,String intro,Integer num);
     Integer getIdPre();
-    Pic getByRand();
+    Msg getByRand();
 }

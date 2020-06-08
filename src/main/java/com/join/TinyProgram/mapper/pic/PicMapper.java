@@ -1,5 +1,6 @@
 package com.join.TinyProgram.mapper.pic;
 
+import com.join.TinyProgram.entity.msg.Msg;
 import com.join.TinyProgram.entity.pic.Pic;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -19,5 +20,5 @@ public interface PicMapper {
     boolean add(Integer num);
     boolean minus(Integer num);
     Integer getIdPre();
-    Pic getByRand();
+    Msg getByRand();
 }
