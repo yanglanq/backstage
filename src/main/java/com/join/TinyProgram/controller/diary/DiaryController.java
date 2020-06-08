@@ -74,6 +74,14 @@ public class DiaryController {
     }
 
     @ResponseBody
+    @RequestMapping("/update")
+    public int update(Book book)throws Exception{
+        Date date=new Date();
+        book.setDate(date);
+        return diaryService.update(book);
+    }
+
+    @ResponseBody
     @RequestMapping("/watering")
     public List<Book> watering(int id)throws Exception{
         List<Book> list=diaryService.listBook(id);
@@ -180,7 +188,7 @@ public class DiaryController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/addDiary",method = RequestMethod.POST)
+    @RequestMapping(value = "/addDiary")
     public int addDiary(Diary diary)throws Exception{
         Date date=new Date();
         diary.setDate(date);

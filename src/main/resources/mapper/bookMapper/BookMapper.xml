@@ -28,7 +28,13 @@
 
     <update id="updateBook">
     UPDATE t_book
-    SET name=#{book.name},headUrl=#{book.headUrl},path=#{book.path}
+    SET headUrl=#{book.headUrl},path=#{book.path}
+    WHERE id=#{book.id}
+    </update>
+
+    <update id="update">
+    UPDATE t_book
+    SET name=#{book.name},description=#{book.description},watering=#{book.watering},plant=#{book.plant}
     WHERE id=#{book.id}
     </update>
 

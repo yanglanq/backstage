@@ -26,6 +26,8 @@ public interface DiaryService {
 
     public Diary queryDiaryById(int id)throws Exception;
 
+    public int update(Book book)throws Exception;
+
     public int addBook(Book book)throws Exception;
 
     public int addImg(Img img)throws Exception;

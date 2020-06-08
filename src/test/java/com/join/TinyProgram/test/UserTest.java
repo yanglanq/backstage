@@ -38,7 +38,7 @@ public class UserTest {
         Date date=new Date();
         diary.setBid(2);
         diary.setDate(date);
-        diary.setTitle("test22");
+        diary.setTitle("add进去");
         diaryService.addDiary(diary);
         System.out.println(diary.getId());
 

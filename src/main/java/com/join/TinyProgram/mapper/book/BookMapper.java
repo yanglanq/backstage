@@ -45,6 +45,15 @@ public interface BookMapper {
      * @return
      * @throws Exception
      */
+    public int update(@Param("book")Book book)throws Exception;
+
+
+    /**
+     * 修改日记
+     * @param
+     * @return
+     * @throws Exception
+     */
     public int freshBook(@Param("id")int id, @Param("date")Date date)throws Exception;
 
 
