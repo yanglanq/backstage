@@ -70,30 +70,31 @@ public class DiaryController {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
         String time=format.format(date);
-        System.out.println(time);
+        //System.out.println(time);
         List<Book> list1=new ArrayList<>();
+       //time="08:25:00";
+
         for(Book book:list){
-            System.out.println(book);
+            //System.out.println(book);
             String w=book.getWatering();
-            System.out.println("1"+w);
-            if (w==null){
-                break;
-            }
-            System.out.println(w);
-            String s[]=w.split(":");
-            String a[]=s[0].split("");
-            int i=exchange(a[0])*10+exchange(a[1]);
-            int i1=i-1;
-            int i2=i+1;
-            String l1=intExchange(i1)+":"+s[1]+":"+s[2];
-            String l2=intExchange(i2)+":"+s[1]+":"+s[2];
-            System.out.println(l1+"   "+l2);
-            if(w!=null){
+            //System.out.println("1"+w);
+            if(book.getWatering()!=null){
+                //System.out.println(w);
+                String s[]=time.split(":");
+                String a[]=s[0].split("");
+                int i=exchange(a[0])*10+exchange(a[1]);
+                int i1=i-1;
+                int i2=i+1;
+                String l1=intExchange(i1)+":"+s[1]+":"+s[2];
+                String l2=intExchange(i2)+":"+s[1]+":"+s[2];
+                System.out.println(l1+"   "+l2);
                 if(l1.compareTo(book.getWatering())<0
                         &&l2.compareTo(book.getWatering())>0){
                     list1.add(book);
                 }
+
             }
+
         }
         return list1;
     }
@@ -121,7 +122,6 @@ public class DiaryController {
         }
         book.setHeadUrl(picUrl+filename);
         book.setPath(path+filename);
-
         return diaryService.updateBook(book);
     }
 
