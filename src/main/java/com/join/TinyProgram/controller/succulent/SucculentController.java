@@ -7,11 +7,14 @@ import com.join.TinyProgram.utils.img.FileUpload;
 import com.join.TinyProgram.utils.img.ImgUploadUtil;
 import com.join.TinyProgram.utils.resultHander.CommonErrorEnum;
 import com.join.TinyProgram.utils.resultHander.ResponseBean;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.apache.http.client.HttpClient;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -160,7 +163,9 @@ public class SucculentController {
         succulent.setFeature(feature);
         succulent.setHabits(habits);
         succulent.setFlorescence(florescence);
+        HttpClient client = HttpClientBuilder.create().build();
         return succulentService.update(succulent);
+
     }
 
     @ResponseBody

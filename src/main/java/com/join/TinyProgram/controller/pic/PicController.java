@@ -23,7 +23,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/pic")
 public class PicController {
-    private Pic pic;
 
     @Autowired
     private PicService picService;
@@ -32,20 +31,6 @@ public class PicController {
     @RequestMapping("/getAll")
     public List<Pic> getAll(){
         return picService.getAll();
-    }
-
-    @ResponseBody
-    @RequestMapping("/userGetMsg")
-    public Pic userGetMsg(){
-        return pic;
-    }
-
-    @Scheduled(cron = "0 6 * * *")
-    @ResponseBody
-    @RequestMapping("/getByRand")
-    public Pic getByRand(){
-            pic = picService.getByRand();
-            return pic;
     }
 
     @ResponseBody
