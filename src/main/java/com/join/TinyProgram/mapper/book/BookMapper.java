@@ -49,10 +49,18 @@ public interface BookMapper {
 
 
     /**
-     * 删除日记
+     * 日记
      * @param
      * @return
      * @throws Exception
      */
     public List<Book> listBook(@Param("uid")int uid)throws Exception;
+
+    /**
+     * 日记
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public Book queryBookById(@Param("id")int id)throws Exception;
 }

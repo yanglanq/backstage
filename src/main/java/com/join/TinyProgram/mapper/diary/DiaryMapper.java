@@ -49,12 +49,21 @@ public interface DiaryMapper {
     public int updateDiary(@Param("diary")Diary diary)throws Exception;
 
     /**
-     * 删除日记
+     *
      * @param
      * @return
      * @throws Exception
      */
     public List<Diary> listDiary(@Param("bid")int bid)throws Exception;
+
+    /**
+     * 删除日记
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public Diary queryDiaryById(@Param("id")int id)throws Exception;
+
     /**
      *
      * @param

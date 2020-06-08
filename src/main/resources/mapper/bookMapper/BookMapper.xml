@@ -43,6 +43,11 @@
     <!--SET title=#{diary.title},inside=#{diary.inside},picUrl=#{diary.picUrl},path=#{diary.path},date=#{diary.date}-->
     <!--WHERE id=#{diary.id}-->
     <!--</update>-->
+    <select id="queryBookById" resultType="com.join.TinyProgram.entity.book.Book">
+        SELECT *
+        FROM t_book
+        Where id=#{id}
+    </select>
 
     <insert id="addBook" parameterType="com.join.TinyProgram.entity.book.Book" useGeneratedKeys="true"  keyProperty="id">
     INSERT INTO t_book

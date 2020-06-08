@@ -79,6 +79,13 @@ public class DiaryServiceImpl implements DiaryService {
         Date date=new Date();
         return bookMapper.freshBook(id,date);
     }
-
+    @Override
+    public Book queryBookById(int id)throws Exception{
+        return bookMapper.queryBookById(id);
+    }
+    @Override
+    public Diary queryDiaryById(int id)throws Exception{
+        return diaryMapper.queryDiaryById(id);
+    }
 
 }
