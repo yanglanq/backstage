@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,33 +56,57 @@ public class DiaryController {
 
     @ResponseBody
     @RequestMapping("/addBook")
-    public int addBook(@RequestParam(value = "file") MultipartFile file,Book book)throws Exception{
+    public int addBook(Book book)throws Exception{
         Date date=new Date();
         book.setDate(date);
-        ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
-        String filename=null;
-        if (file.isEmpty()) {
-            System.out.println("文件为空");
-        }
-        String path="/www/wwwroot/yanglq.xyz/images/userImg/book/";
-        String picUrl="/img/userImg/book/";
-//        String path="e:/yfn/diary/";
-//        String picUrl="/img/diary/";
-        filename=imgUploadUtil.imgUpload(file,path);
-        if (filename==null){
-            return -1;
-        }
-        //diaryService.uploadHead(picUrl+filename,path+filename);
-        book.setHeadUrl(picUrl+filename);
-        book.setPath(path+filename);
         return diaryService.addBook(book);
     }
 
     @ResponseBody
-    @RequestMapping("/updateBook")
+    @RequestMapping("/watering")
+    public List<Book> watering(int id)throws Exception{
+        List<Book> list=diaryService.listBook(id);
+        System.out.println(list);
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
+        String time=format.format(date);
+        //System.out.println(time);
+        List<Book> list1=new ArrayList<>();
+       //time="08:25:00";
+
+        for(Book book:list){
+            //System.out.println(book);
+            String w=book.getWatering();
+            //System.out.println("1"+w);
+            if(book.getWatering()!=null){
+                //System.out.println(w);
+                String s[]=time.split(":");
+                String a[]=s[0].split("");
+                int i=exchange(a[0])*10+exchange(a[1]);
+                int i1=i-1;
+                int i2=i+1;
+                String l1=intExchange(i1)+":"+s[1]+":"+s[2];
+                String l2=intExchange(i2)+":"+s[1]+":"+s[2];
+                System.out.println(l1+"   "+l2);
+                if(l1.compareTo(book.getWatering())<0
+                        &&l2.compareTo(book.getWatering())>0){
+                    list1.add(book);
+                }
+
+            }
+
+        }
+        return list1;
+    }
+
+    @ResponseBody
+    @RequestMapping(value ="/updateBook",method = RequestMethod.POST)
     public int updateBook(@RequestParam(value = "file") MultipartFile file,Book book)throws Exception{
-        File file1=new File(book.getPath());
-        file1.delete();
+        if(book.getPath()!=null){
+            System.out.println("path不为空");
+            File file1=new File(book.getPath());
+            file1.delete();
+        }
         ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
         String filename=null;
         if (file.isEmpty()) {
@@ -96,7 +122,6 @@ public class DiaryController {
         }
         book.setHeadUrl(picUrl+filename);
         book.setPath(path+filename);
-
         return diaryService.updateBook(book);
     }
 
@@ -123,7 +148,7 @@ public class DiaryController {
         return diaryService.deleteDiary(id);
     }
     @ResponseBody
-    @RequestMapping("/updateDiary")
+    @RequestMapping(value ="/updateDiary",method = RequestMethod.POST)
     public int updateDiary(@RequestParam(value = "file") MultipartFile files[],Diary diary)throws Exception{
         Date date=new Date();
         int id=diary.getId();
@@ -194,6 +219,25 @@ public class DiaryController {
             diaryService.addImg(img);
         }
         return 1;
-
     }
+
+    public static int exchange(String s){
+        int foo;
+        try {
+            foo = Integer.parseInt(s);
+        }
+        catch (NumberFormatException e)
+        {
+            foo = 0;
+        }
+
+        return foo;
+    }
+
+    public static String intExchange(int i){
+        String str=String.format("%02d",i);
+        return str;
+    }
+
+
 }

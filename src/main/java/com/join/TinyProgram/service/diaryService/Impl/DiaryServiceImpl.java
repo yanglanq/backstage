@@ -50,7 +50,8 @@ public class DiaryServiceImpl implements DiaryService {
     }
     @Override
     public int addBook(Book book)throws Exception{
-        return bookMapper.addBook(book);
+        bookMapper.addBook(book);
+        return book.getId();
     }
     @Override
     public int updateBook(Book book)throws Exception{

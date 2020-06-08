@@ -1,5 +1,8 @@
 package com.join.TinyProgram.entity.book;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -14,6 +17,9 @@ public class Book {
     private Date date;
     private String headUrl;
     private String path;
+    private String watering;
+    private String plant;
+    private String description;
 
     public int getId() {
         return id;
@@ -63,6 +69,30 @@ public class Book {
         this.path = path;
     }
 
+    public String getWatering() {
+        return watering;
+    }
+
+    public void setWatering(String watering) {
+        this.watering = watering;
+    }
+
+    public String getPlant() {
+        return plant;
+    }
+
+    public void setPlant(String plant) {
+        this.plant = plant;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -72,6 +102,9 @@ public class Book {
                 ", date=" + date +
                 ", headUrl='" + headUrl + '\'' +
                 ", path='" + path + '\'' +
+                ", watering=" + watering +
+                ", plant='" + plant + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

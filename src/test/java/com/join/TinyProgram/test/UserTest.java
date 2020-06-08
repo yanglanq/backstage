@@ -1,6 +1,8 @@
 package com.join.TinyProgram.test;
 
+import com.join.TinyProgram.controller.diary.DiaryController;
 import com.join.TinyProgram.controller.user.UserController;
+import com.join.TinyProgram.entity.book.Book;
 import com.join.TinyProgram.entity.diary.Diary;
 import com.join.TinyProgram.entity.user.User;
 import com.join.TinyProgram.service.diaryService.DiaryService;
@@ -21,6 +23,9 @@ public class UserTest {
     UserController userController;
 
     @Autowired
+    DiaryController diaryController;
+
+    @Autowired
     DiaryService diaryService;
 //    @Test
 //    public void listAllTest()throws Exception {
@@ -39,29 +44,37 @@ public class UserTest {
 
 
     }
-//    @Test
-//    public void refreshTest()throws Exception {
-//        int id=1;
-//        System.out.println(userController.refreshDiary(id));
-//
-//    }
-//    @Test
-//    public void updateDiaryTest()throws Exception {
-//        Diary diary=new Diary();
-//        Date date=new Date();
-//        diary.setId(2);
-//        diary.setBid(1);
-//        diary.setDate(date);
-//        diary.setTitle("happy");
-//        System.out.println(userController.updateDiary(diary));
-//
-//    }
-//    @Test
-//    public void addUserTest()throws Exception {
-//        User user=new User();
-//        user.setUsername("yfn2");
-//        user.setSex("女");
-//        System.out.println(userController.addUser(user));
-//
-//    }
+    @Test
+    public void loginTest()throws Exception {
+        String code="1234";
+        System.out.println(userController.login(code));
+
+    }
+    @Test
+    public void addBookTest()throws Exception {
+        Book book=new Book();
+        book.setName("test");
+        book.setUid(1);
+        Date date=new Date();
+        book.setWatering("08:30:00");
+        book.setDate(date);
+        System.out.println(diaryService.addBook(book));
+
+    }
+    @Test
+    public void addUserTest()throws Exception {
+        User user=new User();
+        user.setId(1);
+        user.setUsername("yfn2");
+        user.setHeadUrl("url");
+        user.setSex("女");
+        System.out.println(userController.addUser(user));
+
+    }
+    @Test
+    public void wateringTest()throws Exception {
+        int id=2;
+        System.out.println(diaryController.watering(id));
+
+    }
 }

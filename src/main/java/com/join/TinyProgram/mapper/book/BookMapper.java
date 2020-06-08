@@ -22,7 +22,7 @@ public interface BookMapper {
      * @return
      * @throws Exception
      */
-    public int addBook(@Param("book")Book book)throws Exception;
+    public int addBook(Book book)throws Exception;
 
     /**
      * 删除日记

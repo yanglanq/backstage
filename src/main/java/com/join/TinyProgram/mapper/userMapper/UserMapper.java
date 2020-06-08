@@ -22,7 +22,7 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public User login(@Param("user")User user) throws Exception;
+    public int updateUser(@Param("user")User user) throws Exception;
 
     /**
      * 注册
@@ -30,32 +30,15 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public int addUser(@Param("user")User user)throws Exception;
+    public int addUser(User user)throws Exception;
 
     /**
-     * 更新个人信息
+     * 删除
      * @param
      * @return
      * @throws Exception
      */
-    public int updateDiary(@Param("id")int id,@Param("diary")String diary)throws Exception;
-
-
-    /**
-     * 更新密码
-     * @param id
-     * @return
-     * @throws Exception
-     */
-    public int updateStatus(@Param("id")int id,@Param("status")int status)throws Exception;
-
-    /**
-     * 删除
-     * @param card
-     * @return
-     * @throws Exception
-     */
-    public int deleteUser(@Param("card")String card)throws Exception;
+    public int deleteUser(@Param("id")int id)throws Exception;
 
     /**
      * 列出所有user
@@ -68,25 +51,6 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public List<User> queryUser(@Param("card")String card)throws Exception;
-//    /**
-//     * 查询
-//     * @return
-//     * @throws Exception
-//     */
-//    public List<Report> queryReport(@Param("stu_id")int stu_id)throws Exception;
+    public User queryUser(@Param("openid")String openid)throws Exception;
 
-    /**
-     * 上传头像
-     * @return
-     * @throws Exception
-     */
-    public int uploadHead(@Param("id")int id,@Param("path")String path,@Param("HeadUrl")String HeadUrl)throws Exception;
-//    /**
-//     * 增加反馈
-//     * @param feelBack
-//     * @return
-//     * @throws Exception
-//     */
-//    public int addFeelBack(@Param("feelBack")FeelBack feelBack)throws Exception;
 }

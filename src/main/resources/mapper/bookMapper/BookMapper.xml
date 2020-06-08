@@ -6,6 +6,7 @@
         <id property="id" column="id"/>
         <result property="uid" column="uid"/>
         <result property="name" column="name"/>
+        <result property="watering" column="watering"/>
     </resultMap>
 
     <select id="listBook" resultType="com.join.TinyProgram.entity.book.Book">
@@ -43,11 +44,10 @@
     <!--WHERE id=#{diary.id}-->
     <!--</update>-->
 
-    <insert id="addBook">
+    <insert id="addBook" parameterType="com.join.TinyProgram.entity.book.Book" useGeneratedKeys="true"  keyProperty="id">
     INSERT INTO t_book
-    (uid,name,headUrl,path,date)
-    VALUES (#{book.uid},#{book.name},
-    #{book.headUrl},#{book.path},#{book.date})
+    (uid,name,plant,date,description,watering)
+    VALUES (#{uid},#{name},#{plant},#{date},#{description},#{watering})
     </insert>
 
 </mapper>
