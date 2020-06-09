@@ -151,6 +151,9 @@ public class DiaryController {
         for(Diary diary:list){
            deleteDiary(diary.getId());
         }
+        Book book=diaryService.queryBookById(id);
+        File file=new File(book.getPath());
+        file.delete();
         return diaryService.deleteBook(id);
     }
 
@@ -168,20 +171,22 @@ public class DiaryController {
     }
     @ResponseBody
     @RequestMapping(value ="/updateDiary",method = RequestMethod.POST)
-    public int updateDiary(@RequestParam(value = "file") MultipartFile file,int id)throws Exception{
+    public int updateDiary(@RequestParam(value = "file")MultipartFile file,int id)throws Exception{
         ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
         String filename=null;
         if (file.isEmpty()) {
             System.out.println("文件为空");
         }
         String path="/www/wwwroot/yanglq.xyz/images/userImg/diary/";
-        String picUrl="/img/userImg/book/";
+        String picUrl="/img/userImg/diary/";
 //        String path="e:/yfn/diary/";
 //        String picUrl="/img/diary/";
         filename=imgUploadUtil.imgUpload(file,path);
         if (filename==null){
             return -1;
         }
+        picUrl=picUrl+filename;
+        path=path+filename;
         Img img=new Img(id,picUrl,path);
         return diaryService.addImg(img);
     }

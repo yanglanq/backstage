@@ -23,11 +23,6 @@ public class ImgUploadUtil {
             return null;
         }
 
-        //String fileName = filename;
-        //file.getOriginalFilename();  // 文件名
-        //String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
-        //String filePath = "/www/wwwroot/yanglq.xyz/images"+path; // 上传后的路径
-        //fileName = fileName + suffixName; // 新文件名
         String fileName = file.getOriginalFilename();
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
