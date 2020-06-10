@@ -148,12 +148,16 @@ public class DiaryController {
     @RequestMapping("/deleteBook")
     public int deleteBook(int id)throws Exception{
         List<Diary> list=diaryService.listDiary(id);
-        for(Diary diary:list){
-           deleteDiary(diary.getId());
+        if(list.size()!=0){
+            for(Diary diary:list){
+                deleteDiary(diary.getId());
+            }
         }
         Book book=diaryService.queryBookById(id);
-        File file=new File(book.getPath());
-        file.delete();
+        if(book.getPath()!=null){
+            File file=new File(book.getPath());
+            file.delete();
+        }
         return diaryService.deleteBook(id);
     }
 
@@ -161,11 +165,13 @@ public class DiaryController {
     @RequestMapping("/deleteDiary")
     public int deleteDiary(int id)throws Exception{
         List<Img> list=diaryService.listImg(id);
-        for(Img img:list){
-            File file=new File(img.getPath());
-            System.out.println(img.getPath());
-            file.delete();
-            diaryService.deleteImg(img.getId());
+        if(list.size()!=0){
+            for(Img img:list){
+                File file=new File(img.getPath());
+                System.out.println(img.getPath());
+                file.delete();
+                diaryService.deleteImg(img.getId());
+            }
         }
         return diaryService.deleteDiary(id);
     }

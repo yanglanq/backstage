@@ -1,5 +1,7 @@
 package com.join.TinyProgram.entity.diary;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -12,6 +14,7 @@ public class Diary {
     private int bid;
     private String title;
     private String inside;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date date;
 
 
