@@ -41,5 +41,6 @@
         select word
         from t_search
         order by num desc
+        limit 10
     </select>
 </mapper>
