@@ -56,4 +56,9 @@
         Where did=#{did}
     </select>
 
+    <select id="queryDiaryById" resultType="com.join.TinyProgram.entity.diary.Diary">
+        SELECT *
+        FROM t_diary
+        Where id=#{id}
+    </select>
 </mapper>

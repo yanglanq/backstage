@@ -29,11 +29,22 @@ public class DiaryController {
     @Autowired
     DiaryService diaryService;
 
-
     @ResponseBody
     @RequestMapping("/listDiary")
     public List<Diary> listDiary(int id)throws Exception{
         return diaryService.listDiary(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/queryDiaryById")
+    public Diary queryDiaryById(int id)throws Exception{
+        return diaryService.queryDiaryById(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/queryBookById")
+    public Book queryBookById(int id)throws Exception{
+        return diaryService.queryBookById(id);
     }
 
     @ResponseBody
@@ -60,6 +71,14 @@ public class DiaryController {
         Date date=new Date();
         book.setDate(date);
         return diaryService.addBook(book);
+    }
+
+    @ResponseBody
+    @RequestMapping("/update")
+    public int update(Book book)throws Exception{
+        Date date=new Date();
+        book.setDate(date);
+        return diaryService.update(book);
     }
 
     @ResponseBody
@@ -129,8 +148,15 @@ public class DiaryController {
     @RequestMapping("/deleteBook")
     public int deleteBook(int id)throws Exception{
         List<Diary> list=diaryService.listDiary(id);
-        for(Diary diary:list){
-           deleteDiary(diary.getId());
+        if(list.size()!=0){
+            for(Diary diary:list){
+                deleteDiary(diary.getId());
+            }
+        }
+        Book book=diaryService.queryBookById(id);
+        if(book.getPath()!=null){
+            File file=new File(book.getPath());
+            file.delete();
         }
         return diaryService.deleteBook(id);
     }
@@ -139,86 +165,46 @@ public class DiaryController {
     @RequestMapping("/deleteDiary")
     public int deleteDiary(int id)throws Exception{
         List<Img> list=diaryService.listImg(id);
-        for(Img img:list){
-            File file=new File(img.getPath());
-            System.out.println(img.getPath());
-            file.delete();
-            diaryService.deleteImg(img.getId());
+        if(list.size()!=0){
+            for(Img img:list){
+                File file=new File(img.getPath());
+                System.out.println(img.getPath());
+                file.delete();
+                diaryService.deleteImg(img.getId());
+            }
         }
         return diaryService.deleteDiary(id);
     }
     @ResponseBody
     @RequestMapping(value ="/updateDiary",method = RequestMethod.POST)
-    public int updateDiary(@RequestParam(value = "file") MultipartFile files[],Diary diary)throws Exception{
-        Date date=new Date();
-        int id=diary.getId();
-        diary.setDate(date);
+    public int updateDiary(@RequestParam(value = "file")MultipartFile file,int id)throws Exception{
         ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
         String filename=null;
-        List<Img> list=diaryService.listImg(id);
-        for(Img img:list){
-            File file=new File(img.getPath());
-            System.out.println(img.getPath());
-            file.delete();
-            diaryService.deleteImg(img.getId());
+        if (file.isEmpty()) {
+            System.out.println("文件为空");
         }
-
-        for(MultipartFile file:files){
-            if (file.isEmpty()) {
-                System.out.println("文件为空");
-                break;
-            }
-            String path="/www/wwwroot/yanglq.xyz/images/userImg/diary/";
-            String picUrl="/img/userImg/diary/";
-            //本地：
-//            String path="e:/yfn/diary/";
-//            String picUrl="/img/diary/";
-            filename=imgUploadUtil.imgUpload(file,path);
-            System.out.println(filename);
-            if (filename==null){
-                return -1;
-            }
-            Img img=new Img(id,picUrl+filename,path+filename);
-            System.out.println(img);
-            System.out.println(diaryService.addImg(img));
+        String path="/www/wwwroot/yanglq.xyz/images/userImg/diary/";
+        String picUrl="/img/userImg/diary/";
+//        String path="e:/yfn/diary/";
+//        String picUrl="/img/diary/";
+        filename=imgUploadUtil.imgUpload(file,path);
+        if (filename==null){
+            return -1;
         }
-
-        return diaryService.updateDiary(diary);
+        picUrl=picUrl+filename;
+        path=path+filename;
+        Img img=new Img(id,picUrl,path);
+        return diaryService.addImg(img);
     }
 
 
     @ResponseBody
-    @RequestMapping(value = "/addDiary",method = RequestMethod.POST)
-    public int addDiary(@RequestParam(value = "file") MultipartFile files[],Diary diary)throws Exception{
+    @RequestMapping(value = "/addDiary")
+    public int addDiary(Diary diary)throws Exception{
         Date date=new Date();
-        int id=-1;
         diary.setDate(date);
         diaryService.addDiary(diary);
-        id=diary.getId();
-        if(id==0){
-            return -2;
-        }
-        ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
-        String filename=null;
-        for(MultipartFile file:files){
-            if (file.isEmpty()) {
-                System.out.println("文件为空");
-                break;
-            }
-
-            String path="/www/wwwroot/yanglq.xyz/images/userImg/diary/";
-            String picUrl="/img/userImg/diary/";
-            //本地：
-//            String path="e:/yfn/diary/";
-//            String picUrl="/img/diary/";
-            filename=imgUploadUtil.imgUpload(file,path);
-            if (filename==null){
-                return -1;
-            }
-            Img img=new Img(id,picUrl+filename,path+filename);
-            diaryService.addImg(img);
-        }
-        return 1;
+        return diary.getId();
     }
 
     public static int exchange(String s){
